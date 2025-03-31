@@ -1,0 +1,58 @@
+<div class="relative">
+  <div class="w-full h-full relative">
+    <h1 class="text-center py-2 text-xl font-medium pt-4">Formulário de Informações</h1>
+    <div mat-dialog-content>
+      <form [formGroup]="formPessoa">
+        <div class="w-full mb-4 pl-6 pr-6">
+          <label for="informacao" class="text-sm font-semibold">Informação</label>
+          <input id="informacao" formControlName="informacao" name="informacao" class="w-full p-2 border border-gray-300 rounded-md" />
+        </div>
+        <div class="w-80 mb-4 pl-6 pr-6">
+          <mat-label class="text-sm font-semibold">Data</mat-label>
+          <div class="grid grid-cols-2">
+            <input matInput [matDatepicker]="dataInfo" class="p-2 border rounded-lg" formControlName="dataInfo" name="dataInfo" placeholder="DD/MM/YYYY" />
+            <mat-datepicker-toggle matIconSuffix [for]="dataInfo"></mat-datepicker-toggle>
+            <mat-datepicker #dataInfo></mat-datepicker>
+          </div>
+        </div>
+        <div class="mb-4">
+          <div class="mb-4" [hidden]="fileEvent.length==0">
+            <table mat-table [dataSource]="fileEvent" class="w-full">
+              <ng-container matColumnDef="nomeFile">
+                <th class="text-center py-1 px-2" mat-header-cell *matHeaderCellDef>Arquivo</th>
+                <td class="text-center py-1 px-2" mat-cell *matCellDef="let files">{{ files.name }}</td>
+              </ng-container>
+              <ng-container matColumnDef="sizeFile">
+                <th class="text-center py-1 px-2" mat-header-cell *matHeaderCellDef>Tamanho</th>
+                <td class="text-center py-1 px-2" mat-cell *matCellDef="let files">{{ files.size / 1000 | number:'1.0-0' }} Kb</td>
+              </ng-container>
+              <ng-container matColumnDef="action">
+                <th class="text-center py-1 px-2" mat-header-cell *matHeaderCellDef>Remover</th>
+                <td class="text-center py-1 px-2" mat-cell *matCellDef="let files">
+                  <button (click)="removeItem(fileEvent)" class="text-red-500 hover:text-red-700">x</button>
+                </td>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          </div>
+          <div class="flex w-[150px] justify-start items-center mb-4 ml-6 mt-6" [hidden]="fileEvent.length >= 3">
+            <label class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 cursor-pointer">
+              <input type="file" id="file" matInput (change)="fileSelect($event)" name="fileEvent" accept=".jpeg,.png,.jpg" class="hidden" />
+              <p class="text-white font-bold text-sm">Upload</p>
+            </label>
+          </div>
+          <mat-hint class="text-sm font-bold text-black ml-6">Arquivos Suportados: PNG, JPG, JPEG - 5MB</mat-hint>
+          <div>
+            <p class="text-xs text-red-500 font-bold" [hidden]="errorStatus == 0 || errorStatus == 2">Arquivo excede o tamanho máximo!</p>
+            <p class="text-xs text-red-500 font-bold" [hidden]="errorStatus == 0 || errorStatus == 1">Arquivo com formato inválido!</p>
+          </div>
+        </div>
+      </form>
+      <div class="flex justify-evenly mt-6 mb-6">
+        <button mat-raised-button cdkFocusInitial color="primary" (click)="createData()" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Enviar</button>
+        <button mat-raised-button color="warn" (click)="cancel()" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>

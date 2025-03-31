@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Pessoa, InfoSubmission } from '../models/pessoa';
+import { DialogComponent } from '../pages/dialog/dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +35,8 @@ export class PessoaService {
     return this.http.get<Pessoa>(`${this.apiUrl}/pessoas/${id}`);
   }
 
-  submitInfo(id: number, info: FormData): Observable<any> {
-    return this.http.post(`${this.apiUrl}/${id}/informacoes`, info);
+  submitInfo(formInforma: FormData): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/ocorrencias/informacoes-desaparecido`, formInforma);
   }
+
 }

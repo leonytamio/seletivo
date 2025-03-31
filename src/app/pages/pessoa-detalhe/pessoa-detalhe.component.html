@@ -1,17 +1,26 @@
-<div class="container mx-auto p-4" *ngIf="pessoa">
-  <h1 class="text-3xl font-bold">{{ pessoa.nome }}</h1>
-  <div class="mt-2 p-2 rounded" [ngClass]="{'bg-red-200': !pessoa.vivo, 'bg-green-200': pessoa.vivo}">
-    <p class="font-semibold">{{ pessoa.vivo ? 'Localizado' : 'Desaparecido' }}</p>
+<h1 *ngIf="pessoa" class=" text-3xl font-bold text-center pt-4">{{ pessoa.nome }}</h1>
+<div class="w-full sm:w-1/3 grid grid-cols-1 gap-4 container mx-auto p-4" *ngIf="pessoa">
+  <div class="flex justify-center">
+    <div class="mt-2 p-2 rounded shadow-lg" [ngClass]="{'bg-red-700': !pessoa.ultimaOcorrencia.encontradoVivo, 'bg-green-700': pessoa.ultimaOcorrencia.encontradoVivo}">
+      <p class="text-white font-semibold text-center text-xl">{{ pessoa.ultimaOcorrencia.encontradoVivo ? 'Localizado' : 'Desaparecido' }}</p>
+      <img [src]="PessoaSemFoto()" (error)="updateUrlError()" alt="Foto" class="object-cover mt-1 rounded mx-auto w-full min-h-64">
+    </div>
   </div>
-  <img [src]="pessoa.urlFoto" alt="Foto" class="w-full md:w-1/3 mt-4 rounded">
-  <p>Idade: {{ pessoa.idade }}</p>
-  <p>Sexo: {{ pessoa.sexo }}</p>
-  <h2 class="text-xl mt-4">Última Ocorrência</h2>
-  <p>Data de Desaparecimento: {{ pessoa.ultimaOcorrencia.dtDesaparecimento | date:'dd/MM/yyyy' }}</p>
-  <p>Data de Localização: {{ pessoa.ultimaOcorrencia.dataLocalizacao | date:'dd/MM/yyyy' }}</p>
-  <p>Local: {{ pessoa.ultimaOcorrencia.localDesaparecimentoConcat }}</p>
-  <p>Vestimentas: {{ pessoa.ultimaOcorrencia.ocorrenciaEntrevDesapDTO.vestimentasDesaparecido }}</p>
-  <button [routerLink]="['/pessoa', pessoa.id, 'info']" class="mt-4 p-2 bg-blue-500 text-white rounded">Enviar Informações</button>
-  <button [routerLink]="['/']" class="mt-2 p-2 bg-gray-500 text-white rounded">Voltar</button>
+
+  <div *ngIf="pessoa" class="bg-gray-200 border-2 p-4 rounded-lg shadow" [ngClass]="{'border-red-700': !pessoa.ultimaOcorrencia.encontradoVivo, 'border-green-700': pessoa.ultimaOcorrencia.encontradoVivo}">
+    <p>Idade: {{ pessoa.idade }}</p>
+    <p>Sexo: {{ pessoa.sexo }}</p>
+    <p>Data de Desaparecimento: {{ pessoa.ultimaOcorrencia.dtDesaparecimento | date:'dd/MM/yyyy' }}</p>
+    <p>Data de Localização: {{ pessoa.ultimaOcorrencia.dataLocalizacao | date:'dd/MM/yyyy' }}</p>
+    <p>Local: {{ pessoa.ultimaOcorrencia.localDesaparecimentoConcat }}</p>
+    <p>Vestimentas: {{ pessoa.ultimaOcorrencia.ocorrenciaEntrevDesapDTO.vestimentasDesaparecido }}</p>
+  </div>    
+
+  <div class="mt-4 flex gap-4 justify-center">
+    <button (click)="openDialog()" class="p-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">Enviar Informações</button>
+    <button [routerLink]="['/']" class="p-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition">Voltar</button>
+    
+  </div>
 </div>
+
 <div *ngIf="!pessoa" class="text-center p-4">Carregando...</div>

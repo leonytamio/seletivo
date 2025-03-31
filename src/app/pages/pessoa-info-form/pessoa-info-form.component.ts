@@ -34,7 +34,7 @@ export class PessoaInfoFormComponent implements OnInit {
     formData.append('dataVisto', this.info.dataVisto);
     if (this.info.foto) formData.append('foto', this.info.foto);
 
-    this.pessoaService.submitInfo(this.pessoaId, formData).subscribe(() => {
+    this.pessoaService.submitInfo(formData).subscribe(() => {
       alert('Informações enviadas com sucesso!');
     });
   }

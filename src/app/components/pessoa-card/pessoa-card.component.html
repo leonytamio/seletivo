@@ -1,6 +1,6 @@
 <div [ngClass]="{'bg-green-700 rounded': pessoa.ultimaOcorrencia.encontradoVivo, 'bg-red-700 rounded': !pessoa.ultimaOcorrencia.encontradoVivo}">
   <p class="text-white text-lg font-bold text-center">
-    {{ pessoa.ultimaOcorrencia.encontradoVivo }}
+    {{ pessoa.ultimaOcorrencia.encontradoVivo ? 'Localizado' : 'Desaparecido' }}
   </p>
 </div>
 <div [routerLink]="['/pessoa', pessoa.id]" class="border rounded shadow hover:bg-gray-100 cursor-pointer">
