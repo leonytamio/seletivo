@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCardModule} from '@angular/material/card';
+import { Pessoa } from '../../models/pessoa';
 
 
 
@@ -18,9 +19,9 @@ import {MatCardModule} from '@angular/material/card';
   templateUrl: './pessoa-lista.component.html',
 })
 export class PessoaListaComponent implements OnInit {
-  pessoas: any[] = [];
+  pessoas: Pessoa[] = [];
   page = 0;
-  pageSize = 10;
+  pageSize = 15;
   filtro = '';
   
   searchParams: any;
@@ -28,10 +29,10 @@ export class PessoaListaComponent implements OnInit {
     faixaIdadeFinal: 0,
     faixaIdadeInicial: 0,
     nome: '',
-    porPagina: 10,
+    porPagina: 15,
     sexo: 'Masculino',
-    status: '',
     pagina:  1,
+    status: '',
   }
   
   constructor(private pessoaService: PessoaService, private fb:UntypedFormBuilder) {
@@ -54,8 +55,11 @@ export class PessoaListaComponent implements OnInit {
   }
   
   loadPessoas(): void {
-    this.pessoaService.getPessoas(this.apiParams).subscribe(res => { 
+    this.pessoaService.getPessoas(this.apiParams).subscribe(res => {
       this.pessoas = res["content"];
+      if (this.apiParams.status == "DESAPARECIDO") {
+        this.pessoas = this.pessoas.filter(pessoa => !pessoa.ultimaOcorrencia.encontradoVivo )
+      }
     });
   }
 
@@ -67,12 +71,14 @@ export class PessoaListaComponent implements OnInit {
 
   nextPage(): void {
     this.apiParams.pagina++;
+    this.page++;
     this.loadPessoas();
   }
 
   prevPage(): void {
     if (this.apiParams.pagina > 0) {
         this.apiParams.pagina--;
+        this.page--;
       this.loadPessoas();
     }
   }

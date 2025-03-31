@@ -17,13 +17,13 @@ export class PessoaService {
 
     const pagina = params.pagina - 1;
     const apiParams = {
-      faixaIdadeFinal: params.faixaIdadeFinal || 0,
       faixaIdadeInicial: params.faixaIdadeInicial || 0,
+      faixaIdadeFinal: params.faixaIdadeFinal || 0,
       nome: params.nome || '',
       porPagina: params.porPagina || 12,
       sexo: params.sexo || '',
-      status: params. status || 'DESAPARECIDO',
       pagina: pagina === -1 ? '0' : pagina.toString(),
+      status: params. status || 'DESAPARECIDO',
     }
     return this.http.get(`${this.apiUrl}/pessoas/aberto/filtro`, {
       params: apiParams
