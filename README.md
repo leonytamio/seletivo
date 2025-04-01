@@ -1,59 +1,56 @@
-# DesaparecidosApp
+# Desaparecidos App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
+## Dados de Inscrição
+- **Nome**: [Seu Nome]
+- **Email**: [Seu Email]
 
-## Development server
+## Sobre o Projeto
+Este é um projeto prático desenvolvido como parte do processo seletivo para o perfil de Desenvolvedor Front-end. A aplicação é uma **Single Page Application (SPA)** que consome a API pública da Polícia Judiciária Civil de Mato Grosso (`https://abitus-api.geia.vip/api/v1/pessoas`) para listar pessoas desaparecidas, exibir detalhes de cada caso e permitir o envio de informações por cidadãos. O projeto foi implementado com foco em responsividade, componentização e boas práticas de desenvolvimento.
 
-To start a local development server, run:
+### Funcionalidades
+1. **Tela Inicial**:
+   - Lista pessoas desaparecidas ou localizadas em cards com imagem, nome, sexo, idade e status.
+   - Paginação com 10 itens por página e controles de "Anterior" e "Próximo".
+   - Campo de pesquisa por nome com atualização dinâmica.
+2. **Tela de Detalhamento**:
+   - Exibe informações detalhadas de uma pessoa, com destaque visual para o status (desaparecido ou localizado).
+   - Inclui dados da última ocorrência, como datas e vestimentas.
+3. **Tela de Envio de Informações**:
+   - Formulário para envio de informações sobre uma pessoa, com campos para texto, local, data (com máscara) e upload de foto.
 
-```bash
-ng serve
-```
+## Tecnologias Utilizadas
+- **Angular 19**: Framework principal, utilizando **standalone components** para uma arquitetura moderna e sem módulos tradicionais.
+- **TypeScript**: Linguagem para tipagem estática e segurança no código.
+- **Tailwind CSS**: Framework CSS para estilização responsiva e design limpo.
+- **ngx-mask**: Biblioteca para aplicar máscaras no campo de data do formulário.
+- **HttpClient**: Módulo nativo do Angular para requisições HTTP em tempo real à API.
+- **Docker**: Containerização para empacotar a aplicação e suas dependências.
+- **Git**: Controle de versão, hospedado no GitHub.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Como o Projeto Foi Feito
+O desenvolvimento seguiu os seguintes passos:
+1. **Estruturação**: Criado com `ng new desaparecidos-app --standalone --style=css`, utilizando standalone components para eliminar a necessidade de `NgModule`.
+2. **Modelos**: Definidos em `src/app/models/person.ts` com interfaces TypeScript para `Pessoa` e `InfoSubmission`, além de enums para `Sexo` e `TipoCartaz`.
+3. **Serviço**: Implementado em `src/app/services/person.service.ts` para consumir a API com métodos para listar pessoas, obter detalhes e enviar informações.
+4. **Componentes**:
+   - `header` e `footer`: Componentes globais adicionados ao `app.component` para navegação e informações fixas.
+   - `person-card`: Componente reutilizável para exibir cada pessoa na lista.
+   - `person-list`: Tela inicial com paginação e pesquisa.
+   - `person-details`: Tela de detalhamento com destaque ao status.
+   - `person-info-form`: Formulário para envio de informações.
+5. **Roteamento**: Configurado em `app.routes.ts` com **Lazy Loading** para carregar as telas sob demanda.
+6. **Estilização**: Usado Tailwind CSS para um layout responsivo, com grid para cards e flexbox para header/footer.
+7. **Containerização**: Criado um `Dockerfile` para build e deploy com Nginx.
 
-## Code scaffolding
+## Pré-requisitos para Rodar
+- **Node.js**: Versão 22 ou superior.
+- **npm**: Versão compatível com o Node.js.
+- **Docker**: Para rodar em container.
+- **Git**: Para clonar o repositório.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Passo a Passo para Rodar o Projeto
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Opção 1: Rodar Localmente
+1. **Clone o Repositório**:
+   git clone https://github.com/seu-usuario/desaparecidos-app.git
+   cd desaparecidos-app
