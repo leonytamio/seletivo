@@ -52,5 +52,22 @@ O desenvolvimento seguiu os seguintes passos:
 
 ### Opção 1: Rodar Localmente
 1. **Clone o Repositório**:
-   git clone https://github.com/seu-usuario/desaparecidos-app.git
+   git clone https://github.com/leonytamio/seletivo-SEPLAG.git
    cd desaparecidos-app
+2. **Instale as Dependências**:
+   npm install
+3. **Execute a Aplicação**:
+   ng serve
+3. **Acesse no Navegador**:
+   Abra http://localhost:4200 para ver a aplicação.
+
+### Opção 2: Rodar com Docker
+1. **Clone o Repositório**:
+   git clone https://github.com/leonytamio/seletivo-SEPLAG.git
+   cd desaparecidos-app
+2. **Construa a Imagem Docker**:
+   docker build -t desaparecidos-app .
+3. **Execute o Container**:
+   docker run -p 80:80 desaparecidos-app
+3. **Acesse no Navegador**:
+   Abra http://localhost para ver a aplicação.
