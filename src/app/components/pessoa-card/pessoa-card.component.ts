@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Pessoa } from '../../models/pessoa';
 import { CommonModule } from '@angular/common';
@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class PessoaCardComponent {
   @Input() pessoa!: Pessoa;
+  @Input() status!: String;
 
   ngOnInit() { }
 

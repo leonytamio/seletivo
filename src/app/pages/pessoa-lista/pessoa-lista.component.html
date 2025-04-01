@@ -3,12 +3,11 @@
 
     <mat-card class="bg-blue-300 p-4 max-w-xl w-full mx-auto" appearance="outlined">
         <mat-card-title class="text-lg font-semibold text-center mb-4">Buscar Pessoa</mat-card-title>
-
         <form [formGroup]="searchParams" (ngSubmit)="onSubmit()">
-
         <div class="grid grid-cols-1">
           <div class=" content-center pr-4">
             <mat-form-field appearance="outline" class="w-full h-1/2">
+              <mat-label class="w-full">Nome</mat-label>
               <input matInput type="search" formControlName="nome" placeholder="Nome"/>
               <button type="button" *ngIf="formControls.nome.value" (click)="formControls.nome.setValue('')">
               </button>
@@ -16,25 +15,32 @@
           </div>
       
       <div class="grid grid-cols-2 pt-3">
+
         <div class="grid grid-cols-1">
           <label class="form-label text-center font-bold">Sexo</label>
-          <mat-radio-group formControlName="sexo" class="place-content-evenly grid grid-cols-1 pl-16">
-            <mat-radio-button value="MASCULINO">Masculino</mat-radio-button>
-            <mat-radio-button value="FEMININO">Feminino</mat-radio-button>
-          </mat-radio-group>
+          <div class="flex flex-row items-center justify-evenly mb-4">
+            <mat-radio-group formControlName="sexo" class="flex-row">
+              <mat-radio-button value="MASCULINO">Masculino</mat-radio-button>
+              <mat-radio-button value="FEMININO">Feminino</mat-radio-button>
+            </mat-radio-group>
+          </div>
         </div>
+
         <div class="grid grid-cols-1">
           <label class="form-label text-center font-bold">Status</label>
-          <mat-radio-group formControlName="status" class="flex-column grid grid-cols-1 pl-16">
-            <mat-radio-button value="DESAPARECIDO">Desaparecido</mat-radio-button>
-            <mat-radio-button value="LOCALIZADO">Localizado</mat-radio-button>
-          </mat-radio-group>
+          <div class="flex flex-row items-center justify-evenly mb-4">
+            <mat-radio-group formControlName="status" class="flex-column">
+              <mat-radio-button value="DESAPARECIDO">Desaparecido</mat-radio-button>
+              <mat-radio-button value="LOCALIZADO">Localizado</mat-radio-button>
+            </mat-radio-group>
+          </div>
         </div>
+
       </div>
     </div>
     </form>
 
-  <div class="flex justify-end pr-4 space-x-3">
+  <div class="flex justify-evenly pr-4 space-x-3">
     <button mat-flat-button class="font-medium bg-yellow-400 hover:bg-yellow-500 w-32 h-12 rounded" type="button" (click)="clear()">
       LIMPAR
     </button>
@@ -46,10 +52,12 @@
 
 
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 pt-6">
-    <app-pessoa-card *ngFor="let pessoa of pessoas" [pessoa]="pessoa"></app-pessoa-card>
+    <app-pessoa-card [status]="status" *ngFor="let pessoa of pessoas" [pessoa]="pessoa"></app-pessoa-card>
   </div>
+
+
   <div class="flex justify-evenly mt-4">
-    <button (click)="prevPage()" [disabled]="page === 0" class="p-2 bg-gray-300 rounded disabled:opacity-50">Anterior</button>
-    <button (click)="nextPage()" class="p-2 bg-gray-300 rounded">Próximo</button>
+    <button (click)="prevPage()" [disabled]="apiParams.pagina === 0" class="p-2 bg-gray-300 rounded disabled:opacity-50">Anterior</button>
+    <button (click)="nextPage()" [disabled]="totalPage == apiParams.pagina" class="p-2 bg-gray-300 rounded">Próximo</button>
   </div>
 </div>
