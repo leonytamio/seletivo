@@ -51,7 +51,7 @@ O desenvolvimento seguiu os seguintes passos:
 ## Passo a Passo para Rodar o Projeto
 
 ### Opção 1: Rodar Localmente
-1. **Clone o Repositório**:
+1. **Clone o Repositório**:<br/>
    git clone https://github.com/leonytamio/seletivo-SEPLAG.git <br/>
    cd desaparecidos-app
 2. **Instale as Dependências**:
@@ -62,7 +62,7 @@ O desenvolvimento seguiu os seguintes passos:
    Abra http://localhost:4200 para ver a aplicação.
 
 ### Opção 2: Rodar com Docker
-1. **Clone o Repositório**:
+1. **Clone o Repositório**:<br/>
    git clone https://github.com/leonytamio/seletivo-SEPLAG.git <br/>
    cd desaparecidos-app
 2. **Construa a Imagem Docker**:
