@@ -1,8 +1,8 @@
 # Desaparecidos App
 
 ## Dados de Inscrição
-- **Nome**: [Seu Nome]
-- **Email**: [Seu Email]
+- **Nome**: Leony Tamio Hatakeyama
+- **Email**: leonytamio@gmail.com
 
 ## Sobre o Projeto
 Este é um projeto prático desenvolvido como parte do processo seletivo para o perfil de Desenvolvedor Front-end. A aplicação é uma **Single Page Application (SPA)** que consome a API pública da Polícia Judiciária Civil de Mato Grosso (`https://abitus-api.geia.vip/api/v1/pessoas`) para listar pessoas desaparecidas, exibir detalhes de cada caso e permitir o envio de informações por cidadãos. O projeto foi implementado com foco em responsividade, componentização e boas práticas de desenvolvimento.
@@ -30,14 +30,14 @@ Este é um projeto prático desenvolvido como parte do processo seletivo para o 
 ## Como o Projeto Foi Feito
 O desenvolvimento seguiu os seguintes passos:
 1. **Estruturação**: Criado com `ng new desaparecidos-app --standalone --style=css`, utilizando standalone components para eliminar a necessidade de `NgModule`.
-2. **Modelos**: Definidos em `src/app/models/person.ts` com interfaces TypeScript para `Pessoa` e `InfoSubmission`, além de enums para `Sexo` e `TipoCartaz`.
-3. **Serviço**: Implementado em `src/app/services/person.service.ts` para consumir a API com métodos para listar pessoas, obter detalhes e enviar informações.
+2. **Modelos**: Definidos em `src/app/models/pessoa.ts` com interfaces TypeScript para `Pessoa` e `InfoSubmission`, além de enums para `Sexo` e `TipoCartaz`.
+3. **Serviço**: Implementado em `src/app/services/pessoa.service.ts` para consumir a API com métodos para listar pessoas, obter detalhes e enviar informações.
 4. **Componentes**:
    - `header` e `footer`: Componentes globais adicionados ao `app.component` para navegação e informações fixas.
-   - `person-card`: Componente reutilizável para exibir cada pessoa na lista.
-   - `person-list`: Tela inicial com paginação e pesquisa.
-   - `person-details`: Tela de detalhamento com destaque ao status.
-   - `person-info-form`: Formulário para envio de informações.
+   - `pessoa-card`: Componente reutilizável para exibir cada pessoa na lista.
+   - `pessoa-lista`: Tela inicial com paginação e pesquisa.
+   - `pessoa-detalhe`: Tela de detalhamento com destaque ao status.
+   - `dialog`: Formulário para envio de informações.
 5. **Roteamento**: Configurado em `app.routes.ts` com **Lazy Loading** para carregar as telas sob demanda.
 6. **Estilização**: Usado Tailwind CSS para um layout responsivo, com grid para cards e flexbox para header/footer.
 7. **Containerização**: Criado um `Dockerfile` para build e deploy com Nginx.
