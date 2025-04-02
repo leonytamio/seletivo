@@ -66,8 +66,8 @@ O desenvolvimento seguiu os seguintes passos:
    git clone https://github.com/leonytamio/seletivo-SEPLAG.git <br/>
    cd seletivo-SEPLAG
 2. **Construa a Imagem Docker**:<br/>
-   docker build -t seletivo-SEPLAG .
+   docker build -t desaparecidos-app .
 3. **Execute o Container**:<br/>
-   docker run -p 80:80 seletivo-SEPLAG
+   docker run -p 80:80 desaparecidos-app
 3. **Acesse no Navegador**:<br/>
    Abra http://localhost para ver a aplicação.
