@@ -90,6 +90,7 @@ export class PessoaListaComponent implements OnInit {
   
   clear() {
     this.searchParams.reset();
+    this.searchParams.get('status').setValue('DESAPARECIDO')
   }
   
   
