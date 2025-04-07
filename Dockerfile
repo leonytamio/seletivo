@@ -8,6 +8,6 @@ RUN npm run build
 
 #Nginx
 FROM nginx:alpine
-COPY --from=build /app/dist/desaparecidos-app /usr/share/nginx/html
+COPY --from=build /app/dist/desaparecidos-app/browser /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
