@@ -52,8 +52,8 @@ O desenvolvimento seguiu os seguintes passos:
 
 ### Opção 1: Rodar Localmente
 1. **Clone o Repositório**:<br/>
-   git clone https://github.com/leonytamio/seletivo-SEPLAG.git <br/>
-   cd seletivo-SEPLAG
+   git clone https://github.com/leonytamio/seletivo.git <br/>
+   cd seletivo
 2. **Instale as Dependências**:<br/>
    npm install
 3. **Execute a Aplicação**:<br/>
@@ -63,8 +63,8 @@ O desenvolvimento seguiu os seguintes passos:
 
 ### Opção 2: Rodar com Docker
 1. **Clone o Repositório**:<br/>
-   git clone https://github.com/leonytamio/seletivo-SEPLAG.git <br/>
-   cd seletivo-SEPLAG
+   git clone https://github.com/leonytamio/seletivo.git <br/>
+   cd seletivo
 2. **Construa a Imagem Docker**:<br/>
    docker build -t desaparecidos-app .
 3. **Execute o Container**:<br/>
